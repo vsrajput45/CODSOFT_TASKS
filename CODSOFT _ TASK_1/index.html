@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal Portfolio of Vivek Singh - Frontend Developer and BCA student showcasing responsive web development, skills, projects, and resume for CodSoft Internship Task 1.">
+  <meta name="keywords" content="Vivek Singh, Frontend Developer, CodSoft, Task 1, Portfolio, Web Developer, HTML, CSS, JavaScript, BCA">
+  <meta name="author" content="Vivek Singh">
+  <title>Vivek Singh | Frontend Developer & BCA Tech Builder</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2300d2ff'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='48' fill='%23070b14'>VS</text></svg>">
+
+  <!-- Google Fonts: Outfit for display headers, Inter for smooth reading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons for polished, crisp visuals -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Soft Glowing Background Orbs -->
+  <div class="ambient-glow orb-1" aria-hidden="true"></div>
+  <div class="ambient-glow orb-2" aria-hidden="true"></div>
+  <div class="ambient-glow orb-3" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-brand" aria-label="Vivek Singh Home">
+        <span class="brand-avatar">VS</span>
+        <span class="brand-text">Vivek<span class="text-accent">.</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link"><i class="fa-solid fa-layer-group"></i> Skills</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a></li>
+          <li class="nav-item"><a href="#resume" class="nav-link"><i class="fa-solid fa-file-lines"></i> Resume</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link"><i class="fa-solid fa-paper-plane"></i> Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions (Theme Switcher + Mobile Toggle) -->
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light theme" title="Switch Theme">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+
+        <a href="#contact" class="btn btn-sm btn-accent nav-cta">Let's Talk</a>
+
+        <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="nav-brand">
+        <span class="brand-avatar">VS</span>
+        <span class="brand-text">Vivek<span class="text-accent">.</span></span>
+      </div>
+      <button id="closeDrawerBtn" class="close-btn" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="#home" class="mobile-nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="#about" class="mobile-nav-link"><i class="fa-solid fa-user"></i> About</a></li>
+      <li><a href="#skills" class="mobile-nav-link"><i class="fa-solid fa-layer-group"></i> Skills</a></li>
+      <li><a href="#projects" class="mobile-nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a></li>
+      <li><a href="#resume" class="mobile-nav-link"><i class="fa-solid fa-file-lines"></i> Resume</a></li>
+      <li><a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> Contact</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <a href="assets/Vivek_Singh_Resume.pdf" download="Vivek_Singh_Resume.pdf" class="btn btn-primary btn-block">
+        <i class="fa-solid fa-download"></i> Download Resume
+      </a>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <!-- Main Content -->
+  <main>
+    <!-- 1. HOME / HERO SECTION -->
+    <section id="home" class="hero-section">
+      <div class="container hero-container">
+        <!-- Hero Text Content -->
+        <div class="hero-content">
+          <div class="badge-pill hero-badge">
+            <span class="status-indicator"></span>
+            <span>CODSOFT INTERNSHIP &bull; TASK 1</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Vivek Singh</span>
+          </h1>
+
+          <div class="hero-role-wrapper">
+            <span class="role-static">I am a&nbsp;</span>
+            <span class="role-dynamic" id="typewriterText"></span>
+            <span class="cursor">&nbsp;</span>
+          </div>
+
+          <p class="hero-description">
+            Passionate BCA student and Frontend Developer building modern, ultra-responsive web applications with clean code, intuitive UI/UX design, and dynamic interactive experiences.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary btn-lg">
+              <span>View Projects</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn-secondary btn-lg">
+              <span>Contact Me</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </a>
+            <a href="assets/Vivek_Singh_Resume.pdf" download="Vivek_Singh_Resume.pdf" class="btn btn-ghost btn-lg" title="Direct PDF Download">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>CV</span>
+            </a>
+          </div>
+
+          <!-- Hero Highlights / Stats -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Projects Built</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Responsive UI</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">BCA</span>
+              <span class="stat-label">Computer Apps</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Profile Card -->
+        <div class="hero-visual">
+          <div class="profile-card-glass">
+            <div class="profile-card-glow"></div>
+            
+            <div class="avatar-wrapper">
+              <img src="assets/avatar-3d-transparent.png" alt="Vivek Singh Avatar" class="avatar-img" onerror="this.onerror=null; this.src='assets/avatar-3d-smile.png';">
+              <div class="live-status-chip" title="Currently Available">
+                <span class="status-pulse"></span>
+                <span>Available for Hire</span>
+              </div>
+            </div>
+
+            <div class="profile-info">
+              <h3 class="profile-name">Vivek Singh</h3>
+              <p class="profile-title">Frontend Developer & Tech Explorer</p>
+              
+              <!-- Floating Tech Badges -->
+              <div class="tech-pills-row">
+                <span class="tech-pill"><i class="fa-brands fa-html5"></i> HTML5</span>
+                <span class="tech-pill"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                <span class="tech-pill"><i class="fa-brands fa-js"></i> JS ES6+</span>
+                <span class="tech-pill"><i class="fa-brands fa-react"></i> React</span>
+              </div>
+            </div>
+
+            <!-- Floating Micro-Cards -->
+            <div class="floating-badge badge-top-right">
+              <i class="fa-solid fa-wand-magic-sparkles text-accent"></i>
+              <span>Soft Modern UI</span>
+            </div>
+
+            <div class="floating-badge badge-bottom-left">
+              <i class="fa-solid fa-code-commit text-emerald"></i>
+              <span>Clean Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <a href="#about" class="scroll-down-indicator" aria-label="Scroll to About section">
+        <span>Scroll Down</span>
+        <i class="fa-solid fa-chevron-down bounce-icon"></i>
+      </a>
+    </section>
+
+    <!-- 2. ABOUT SECTION -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-fingerprint"></i>
+            <span>GET TO KNOW ME</span>
+          </div>
+          <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+          <p class="section-subtitle">
+            Driven by curiosity, fueled by code, and dedicated to transforming ambitious ideas into functional digital realities.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left Bio Card -->
+          <div class="about-bio-card glass-card">
+            <div class="card-glow-accent"></div>
+            <div class="bio-header">
+              <div class="avatar-small">
+                <img src="assets/avatar-3d-smile.png" alt="Vivek Singh" onerror="this.onerror=null; this.src='assets/avatar-3d-transparent.png';">
+              </div>
+              <div>
+                <h3 class="bio-name">Vivek Singh</h3>
+                <p class="bio-subtitle">BCA Student &bull; Frontend Developer &bull; AI Enthusiast</p>
+              </div>
+            </div>
+
+            <p class="bio-paragraph">
+              Hello! I am <strong class="text-highlight">Vivek Singh</strong>, a BCA (Bachelor of Computer Applications) student passionate about modern frontend engineering, interactive web applications, and intuitive user experiences.
+            </p>
+
+            <p class="bio-paragraph">
+              My philosophy is simple: <em class="quote-text">"I don't just learn technology — I build with it."</em> I enjoy taking a concept from an empty editor to a fully responsive, polished product that users love to interact with.
+            </p>
+
+            <p class="bio-paragraph">
+              Alongside core web development (HTML5, CSS3, JavaScript, React), I actively experiment with AI systems, data modeling, and defensive cybersecurity paradigms to build comprehensive, future-ready digital solutions.
+            </p>
+
+            <!-- Quick Details Matrix -->
+            <div class="details-matrix">
+              <div class="detail-box">
+                <span class="detail-label"><i class="fa-solid fa-graduation-cap"></i> Degree</span>
+                <span class="detail-val">BCA (Computer Science)</span>
+              </div>
+              <div class="detail-box">
+                <span class="detail-label"><i class="fa-solid fa-location-dot"></i> Location</span>
+                <span class="detail-val">India</span>
+              </div>
+              <div class="detail-box">
+                <span class="detail-label"><i class="fa-solid fa-envelope"></i> Email</span>
+                <span class="detail-val">vivekrajput7468@gmail.com</span>
+              </div>
+              <div class="detail-box">
+                <span class="detail-label"><i class="fa-solid fa-briefcase"></i> Internship</span>
+                <span class="detail-val">CodSoft Frontend Intern</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Feature Cards -->
+          <div class="about-features-grid">
+            <div class="feature-card glass-card">
+              <div class="feature-icon icon-cyan">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+              </div>
+              <div class="feature-info">
+                <h4>Responsive Web Design</h4>
+                <p>Crafting fluid layouts with Flexbox and CSS Grid that adapt seamlessly to mobile phones, tablets, and wide desktop screens.</p>
+              </div>
+            </div>
+
+            <div class="feature-card glass-card">
+              <div class="feature-icon icon-purple">
+                <i class="fa-solid fa-laptop-code"></i>
+              </div>
+              <div class="feature-info">
+                <h4>Dynamic JavaScript Logic</h4>
+                <p>Writing clean, modern ES6+ JavaScript for DOM manipulation, smooth interactivity, asynchronous data flows, and form validations.</p>
+              </div>
+            </div>
+
+            <div class="feature-card glass-card">
+              <div class="feature-icon icon-indigo">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div class="feature-info">
+                <h4>AI & Digital Innovation</h4>
+                <p>Exploring artificial intelligence integrations, automated workflows, and data-driven problem solving across real-world systems.</p>
+              </div>
+            </div>
+
+            <div class="feature-card glass-card">
+              <div class="feature-icon icon-emerald">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div class="feature-info">
+                <h4>Security & Quality First</h4>
+                <p>Emphasizing defense-in-depth principles, accessible semantic markup, safe client-side practices, and clean project modularity.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SKILLS SECTION -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-code"></i>
+            <span>TECHNICAL EXPERTISE</span>
+          </div>
+          <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+          <p class="section-subtitle">
+            A comprehensive overview of the technologies, tools, and design capabilities I utilize to build modern web solutions.
+          </p>
+        </div>
+
+        <!-- Skills Filter Tabs -->
+        <div class="filter-tabs-wrapper">
+          <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">All Skills</button>
+            <button class="filter-btn" data-filter="frontend">Frontend</button>
+            <button class="filter-btn" data-filter="tools">Tools & Workflow</button>
+            <button class="filter-btn" data-filter="advanced">Advanced & AI</button>
+          </div>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid" id="skillsGrid">
+          <!-- Skill: HTML5 -->
+          <div class="skill-card glass-card" data-category="frontend">
+            <div class="skill-top">
+              <div class="skill-icon html-icon">
+                <i class="fa-brands fa-html5"></i>
+              </div>
+              <span class="skill-percent">95%</span>
+            </div>
+            <h3 class="skill-name">HTML5</h3>
+            <p class="skill-desc">Semantic structure, modern Web APIs, clean hierarchy, accessibility (a11y), and SEO best practices.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="--target-width: 95%;"></div>
+            </div>
+            <div class="skill-tags">
+              <span>Semantics</span>
+              <span>SEO</span>
+              <span>Accessibility</span>
+            </div>
+          </div>
+
+          <!-- Skill: CSS3 -->
+          <div class="skill-card glass-card" data-category="frontend">
+            <div class="skill-top">
+              <div class="skill-icon css-icon">
+                <i class="fa-brands fa-css3-alt"></i>
+              </div>
+              <span class="skill-percent">92%</span>
+            </div>
+            <h3 class="skill-name">CSS3 & Styling</h3>
+            <p class="skill-desc">Modern Flexbox, CSS Grid, custom properties, glassmorphism, responsive media queries, and keyframe animations.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="--target-width: 92%;"></div>
+            </div>
+            <div class="skill-tags">
+              <span>Flexbox/Grid</span>
+              <span>Animations</span>
+              <span>Glassmorphism</span>
+            </div>
+          </div>
+
+          <!-- Skill: JavaScript -->
+          <div class="skill-card glass-card" data-category="frontend">
+            <div class="skill-top">
+              <div class="skill-icon js-icon">
+                <i class="fa-brands fa-js"></i>
+              </div>
+              <span class="skill-percent">88%</span>
+            </div>
+            <h3 class="skill-name">JavaScript (ES6+)</h3>
+            <p class="skill-desc">DOM manipulation, event delegation, Async/Await, Fetch API, client-side validation, and modular structure.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="--target-width: 88%;"></div>
+            </div>
+            <div class="skill-tags">
+              <span>ES6+</span>
+              <span>DOM APIs</span>
+              <span>Async/Fetch</span>
+            </div>
+          </div>
+
+          <!-- Skill: Responsive Design -->
+          <div class="skill-card glass-card" data-category="frontend">
+            <div class="skill-top">
+              <div class="skill-icon responsive-icon">
+                <i class="fa-solid fa-display"></i>
+              </div>
+              <span class="skill-percent">94%</span>
+            </div>
+            <h3 class="skill-name">Responsive Design</h3>
+            <p class="skill-desc">Mobile-first methodology, viewport scaling, fluid typography with clamp(), and cross-browser consistency.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="--target-width: 94%;"></div>
+            </div>
+            <div class="skill-tags">
+              <span>Mobile-First</span>
+              <span>Fluid Layout</span>
+              <span>Cross-Browser</span>
+            </div>
+          </div>
+
+          <!-- Skill: Git & GitHub -->
+          <div class="skill-card glass-card" data-category="tools">
+            <div class="skill-top">
+              <div class="skill-icon git-icon">
+                <i class="fa-brands fa-git-alt"></i>
+              </div>
+              <span class="skill-percent">86%</span>
+            </div>
+            <h3 class="skill-name">Git & GitHub</h3>
+            <p class="skill-desc">Source code version control, branch management, collaborative workflows, and GitHub repository hosting.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="--target-width: 86%;"></div>
+            </div>
+            <div class="skill-tags">
+              <span>Version Control</span>
+              <span>Branching</span>
+              <span>Open Source</span>
+            </div>
+          </div>
+
+          <!-- Skill: UI/UX & Design Systems -->
+          <div class="skill-card glass-card" data-category="tools">
+            <div class="skill-top">
+              <div class="skill-icon uiux-icon">
+                <i class="fa-solid fa-bezier-curve"></i>
+              </div>
+              <span class="skill-percent">85%</span>
+            </div>
+            <h3 class="skill-name">UI/UX & Prototyping</h3>
+            <p class="skill-desc">Design hierarchy, soft modern color palettes, typography balance, micro-interactions, and user journeys.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="--target-width: 85%;"></div>
+            </div>
+            <div class="skill-tags">
+              <span>Wireframing</span>
+              <span>Micro-Interactions</span>
+              <span>Color Systems</span>
+            </div>
+          </div>
+
+          <!-- Skill: React & Modern Web -->
+          <div class="skill-card glass-card" data-category="advanced">
+            <div class="skill-top">
+              <div class="skill-icon react-icon">
+                <i class="fa-brands fa-react"></i>
+              </div>
+              <span class="skill-percent">82%</span>
+            </div>
+            <h3 class="skill-name">React & Component Web</h3>
+            <p class="skill-desc">Reusable component architecture, state management, modern hooks, Vite tooling, and fast rendering.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="--target-width: 82%;"></div>
+            </div>
+            <div class="skill-tags">
+              <span>Components</span>
+              <span>Hooks</span>
+              <span>Vite/SPA</span>
+            </div>
+          </div>
+
+          <!-- Skill: AI & Python Foundations -->
+          <div class="skill-card glass-card" data-category="advanced">
+            <div class="skill-top">
+              <div class="skill-icon python-icon">
+                <i class="fa-brands fa-python"></i>
+              </div>
+              <span class="skill-percent">80%</span>
+            </div>
+            <h3 class="skill-name">AI & Python Foundations</h3>
+            <p class="skill-desc">Machine learning APIs, telemetry modeling, Python scripting, intelligent automation, and telemetry pipelines.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="--target-width: 80%;"></div>
+            </div>
+            <div class="skill-tags">
+              <span>Machine Learning</span>
+              <span>AI APIs</span>
+              <span>Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PROJECTS SECTION -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-rocket"></i>
+            <span>PORTFOLIO SHOWCASE</span>
+          </div>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p class="section-subtitle">
+            A curated collection of practical frontend applications, intelligent systems, and interactive tools built by Vivek Singh.
+          </p>
+        </div>
+
+        <!-- Project Filter Buttons -->
+        <div class="filter-tabs-wrapper">
+          <div class="filter-tabs">
+            <button class="project-filter-btn active" data-pfilter="all">All Projects</button>
+            <button class="project-filter-btn" data-pfilter="featured">Flagship / AI</button>
+            <button class="project-filter-btn" data-pfilter="frontend">Frontend & Apps</button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Project 1: Aeropulse AI -->
+          <article class="project-card glass-card" data-pcat="featured">
+            <div class="project-thumb-wrapper">
+              <div class="project-badge">AI &bull; UAV DIGITAL TWIN</div>
+              <div class="project-thumb-art art-aeropulse">
+                <i class="fa-solid fa-jet-fighter-up"></i>
+                <div class="pulse-ring"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-num">01</span>
+                <span class="project-status"><span class="dot-online"></span> Production Ready</span>
+              </div>
+              <h3 class="project-title">AEROPULSE AI</h3>
+              <p class="project-summary">
+                AI-enabled real-time digital twin system designed for engine telemetry monitoring, anomaly detection, and mission reliability of aero engines used in MALE UAVs.
+              </p>
+              <div class="project-tech-stack">
+                <span>React</span>
+                <span>TypeScript</span>
+                <span>Python AI</span>
+                <span>Telemetry</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project="aeropulse">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+                <a href="#contact" class="btn btn-sm btn-ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Inquire
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: GramSathi AI -->
+          <article class="project-card glass-card" data-pcat="featured">
+            <div class="project-thumb-wrapper">
+              <div class="project-badge">RURAL TECH &bull; AI</div>
+              <div class="project-thumb-art art-gramsathi">
+                <i class="fa-solid fa-wheat-awn"></i>
+                <div class="pulse-ring"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-num">02</span>
+                <span class="project-status"><span class="dot-online"></span> Impact Project</span>
+              </div>
+              <h3 class="project-title">GRAMSATHI AI</h3>
+              <p class="project-summary">
+                A localized rural empowerment intelligence platform providing multilingual advisory, scheme discovery, and intelligent citizen assistance for underserved communities.
+              </p>
+              <div class="project-tech-stack">
+                <span>Next-Gen Web</span>
+                <span>AI NLP</span>
+                <span>Multilingual</span>
+                <span>Voice UI</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project="gramsathi">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+                <a href="#contact" class="btn btn-sm btn-ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Inquire
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Cyberhevix Technology -->
+          <article class="project-card glass-card" data-pcat="featured">
+            <div class="project-thumb-wrapper">
+              <div class="project-badge">CYBER DEFENSE &bull; WEB</div>
+              <div class="project-thumb-art art-cyberhevix">
+                <i class="fa-solid fa-shield-virus"></i>
+                <div class="pulse-ring"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-num">03</span>
+                <span class="project-status"><span class="dot-online"></span> Active System</span>
+              </div>
+              <h3 class="project-title">CYBERHEVIX TECHNOLOGY</h3>
+              <p class="project-summary">
+                High-performance platform engineering and defensive cyber surveillance interface offering structured threat recon, reconnaissance dashboards, and security workflows.
+              </p>
+              <div class="project-tech-stack">
+                <span>Modern Web</span>
+                <span>Security</span>
+                <span>Linux</span>
+                <span>Networks</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project="cyberhevix">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+                <a href="#contact" class="btn btn-sm btn-ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Inquire
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Interactive Task & To-Do Hub -->
+          <article class="project-card glass-card" data-pcat="frontend">
+            <div class="project-thumb-wrapper">
+              <div class="project-badge">FRONTEND &bull; UTILITY</div>
+              <div class="project-thumb-art art-todo">
+                <i class="fa-solid fa-list-check"></i>
+                <div class="pulse-ring"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-num">04</span>
+                <span class="project-status"><span class="dot-online"></span> Live Interactive</span>
+              </div>
+              <h3 class="project-title">TASK & TO-DO HUB</h3>
+              <p class="project-summary">
+                Responsive productivity web app with dynamic task creation, status categorization (Pending/Completed), priority filters, and browser LocalStorage persistence.
+              </p>
+              <div class="project-tech-stack">
+                <span>HTML5</span>
+                <span>CSS3 Grid</span>
+                <span>JavaScript</span>
+                <span>LocalStorage</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project="todo">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+                <button class="btn btn-sm btn-ghost quick-demo-btn" data-demo="todo">
+                  <i class="fa-solid fa-play"></i> Quick Play
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5: Smart Expense Tracker -->
+          <article class="project-card glass-card" data-pcat="frontend">
+            <div class="project-thumb-wrapper">
+              <div class="project-badge">FINTECH &bull; CALCULATOR</div>
+              <div class="project-thumb-art art-expense">
+                <i class="fa-solid fa-wallet"></i>
+                <div class="pulse-ring"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-num">05</span>
+                <span class="project-status"><span class="dot-online"></span> Live Interactive</span>
+              </div>
+              <h3 class="project-title">EXPENSE TRACKER</h3>
+              <p class="project-summary">
+                Interactive financial management dashboard calculating real-time balance, income vs. expense graphs, categorized spending breakdown, and transaction logging.
+              </p>
+              <div class="project-tech-stack">
+                <span>Vanilla JS</span>
+                <span>CSS Glassmorphism</span>
+                <span>Form Validation</span>
+                <span>Data Math</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project="expense">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+                <button class="btn btn-sm btn-ghost quick-demo-btn" data-demo="expense">
+                  <i class="fa-solid fa-play"></i> Quick Play
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6: Modern Audio Streamer -->
+          <article class="project-card glass-card" data-pcat="frontend">
+            <div class="project-thumb-wrapper">
+              <div class="project-badge">AUDIO &bull; MULTIMEDIA</div>
+              <div class="project-thumb-art art-music">
+                <i class="fa-solid fa-compact-disc"></i>
+                <div class="pulse-ring"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-num">06</span>
+                <span class="project-status"><span class="dot-online"></span> Live Interactive</span>
+              </div>
+              <h3 class="project-title">AURA MUSIC PLAYER</h3>
+              <p class="project-summary">
+                Elegant web audio player with smooth playlist queuing, interactive seek progress bar, volume control, track metadata, and animated equalizer frequency visualizer.
+              </p>
+              <div class="project-tech-stack">
+                <span>HTML5 Audio API</span>
+                <span>JavaScript</span>
+                <span>Keyframes CSS</span>
+                <span>Media State</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project="music">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+                <button class="btn btn-sm btn-ghost quick-demo-btn" data-demo="music">
+                  <i class="fa-solid fa-play"></i> Quick Play
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. RESUME SECTION -->
+    <section id="resume" class="section resume-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span>CURRICULUM VITAE</span>
+          </div>
+          <h2 class="section-title">My <span class="gradient-text">Resume</span></h2>
+          <p class="section-subtitle">
+            A comprehensive look at my education, technical strengths, practical experience, and development capabilities.
+          </p>
+        </div>
+
+        <div class="resume-card-container">
+          <div class="resume-sheet glass-card">
+            <!-- Sheet Header -->
+            <div class="resume-sheet-header">
+              <div class="resume-header-left">
+                <div class="resume-avatar-badge">VS</div>
+                <div>
+                  <h3 class="resume-name">VIVEK SINGH</h3>
+                  <p class="resume-role">Frontend & Full-Stack Developer &bull; BCA Student</p>
+                </div>
+              </div>
+              <div class="resume-actions-top">
+                <a href="assets/Vivek_Singh_Resume.pdf" download="Vivek_Singh_Resume.pdf" class="btn btn-primary" id="downloadResumeBtn">
+                  <i class="fa-solid fa-download"></i> Download PDF
+                </a>
+                <button class="btn btn-secondary" id="previewResumeBtn">
+                  <i class="fa-solid fa-eye"></i> Full Preview
+                </button>
+              </div>
+            </div>
+
+            <!-- Resume Content Columns -->
+            <div class="resume-sheet-body">
+              <!-- Left Column: Education & Experience -->
+              <div class="resume-col">
+                <h4 class="resume-col-title"><i class="fa-solid fa-graduation-cap"></i> Education & Internships</h4>
+                
+                <div class="resume-timeline-item">
+                  <span class="timeline-date">2024 — Present</span>
+                  <h5 class="timeline-title">Bachelor of Computer Applications (BCA)</h5>
+                  <p class="timeline-org">University Degree Program</p>
+                  <p class="timeline-desc">Specializing in Computer Science fundamentals, Software Engineering, Modern Web Development, and Applied AI.</p>
+                </div>
+
+                <div class="resume-timeline-item">
+                  <span class="timeline-date">2026</span>
+                  <h5 class="timeline-title">Frontend Web Development Intern</h5>
+                  <p class="timeline-org">CodSoft Virtual Internship</p>
+                  <p class="timeline-desc">Built Task 1 Personal Portfolio Website meeting all technical standards with HTML5 semantics, responsive CSS3 styling, and JavaScript validation.</p>
+                </div>
+
+                <div class="resume-timeline-item">
+                  <span class="timeline-date">2025 — 2026</span>
+                  <h5 class="timeline-title">Independent R&D & Product Builder</h5>
+                  <p class="timeline-org">Self-Driven Projects</p>
+                  <p class="timeline-desc">Engineered telemetry systems (Aeropulse AI), community platforms (GramSathi AI), and cybersecurity reconnaissance interfaces.</p>
+                </div>
+              </div>
+
+              <!-- Right Column: Core Competencies & Skills -->
+              <div class="resume-col">
+                <h4 class="resume-col-title"><i class="fa-solid fa-sliders"></i> Core Competencies</h4>
+
+                <div class="resume-skill-group">
+                  <h5 class="group-title">Frontend Mastery</h5>
+                  <p class="group-text">HTML5, CSS3, JavaScript (ES6+), Responsive Web Design, Flexbox, CSS Grid, React, Cross-Browser Compatibility.</p>
+                </div>
+
+                <div class="resume-skill-group">
+                  <h5 class="group-title">System & AI Integration</h5>
+                  <p class="group-text">Python, Machine Learning APIs, Telemetry Data Simulation, Digital Twin Architecture, RESTful Services.</p>
+                </div>
+
+                <div class="resume-skill-group">
+                  <h5 class="group-title">Tooling & Engineering</h5>
+                  <p class="group-text">Git, GitHub, VS Code, Chrome DevTools, Vite, Performance Optimization, Form Validation.</p>
+                </div>
+
+                <div class="resume-skill-group">
+                  <h5 class="group-title">Key Strengths</h5>
+                  <p class="group-text">Fast learner, prototype-first mentality, attention to UI micro-interactions, clean documentation.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resume Bottom Download Strip -->
+            <div class="resume-bottom-strip">
+              <div class="strip-text">
+                <i class="fa-solid fa-circle-check text-emerald"></i>
+                <span>Verified CV File Available for Immediate Download</span>
+              </div>
+              <a href="assets/Vivek_Singh_Resume.pdf" download="Vivek_Singh_Resume.pdf" class="btn btn-sm btn-accent">
+                <i class="fa-solid fa-file-arrow-down"></i> Download Vivek_Singh_Resume.pdf
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CONTACT SECTION -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-comments"></i>
+            <span>GET IN TOUCH</span>
+          </div>
+          <h2 class="section-title">Let's Work <span class="gradient-text">Together</span></h2>
+          <p class="section-subtitle">
+            Have a project in mind, want to discuss opportunities, or simply want to connect? Send me a message below!
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Contact Details & Socials -->
+          <div class="contact-info-card glass-card">
+            <div class="card-glow-accent"></div>
+            <h3>Contact Information</h3>
+            <p class="contact-intro">
+              I'm always open to discussing new web development projects, creative ideas, or frontend internship opportunities.
+            </p>
+
+            <div class="contact-methods">
+              <a href="mailto:vivekrajput7468@gmail.com" class="contact-method-item">
+                <div class="method-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="method-body">
+                  <span class="method-label">Direct Email</span>
+                  <span class="method-val">vivekrajput7468@gmail.com</span>
+                </div>
+              </a>
+
+              <div class="contact-method-item">
+                <div class="method-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="method-body">
+                  <span class="method-label">Location</span>
+                  <span class="method-val">India (Open to Remote Globally)</span>
+                </div>
+              </div>
+
+              <div class="contact-method-item">
+                <div class="method-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="method-body">
+                  <span class="method-label">Availability</span>
+                  <span class="method-val">Immediate &bull; Full-time / Internship</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="contact-socials">
+              <span class="socials-label">Connect with Vivek:</span>
+              <div class="social-icons-row">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-circle" aria-label="GitHub Profile">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-circle" aria-label="LinkedIn Profile">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:vivekrajput7468@gmail.com" class="social-circle" aria-label="Email Vivek">
+                  <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-circle" aria-label="Twitter Profile">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Contact Form with JS Validation -->
+          <div class="contact-form-card glass-card">
+            <h3 class="form-title">Send a Message</h3>
+            <p class="form-subtitle">Fill in the fields below and I'll respond as soon as possible.</p>
+
+            <form id="contactForm" novalidate>
+              <!-- Name Input -->
+              <div class="form-group" id="nameGroup">
+                <label for="userName" class="form-label">
+                  Your Full Name <span class="required-star">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <i class="fa-regular fa-user input-icon"></i>
+                  <input 
+                    type="text" 
+                    id="userName" 
+                    name="userName" 
+                    class="form-control" 
+                    placeholder="e.g. John Doe"
+                    required
+                    autocomplete="name"
+                  >
+                </div>
+                <span class="field-error-msg" id="nameError">Please enter your name (at least 2 characters).</span>
+              </div>
+
+              <!-- Email Input -->
+              <div class="form-group" id="emailGroup">
+                <label for="userEmail" class="form-label">
+                  Your Email Address <span class="required-star">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <i class="fa-regular fa-envelope input-icon"></i>
+                  <input 
+                    type="email" 
+                    id="userEmail" 
+                    name="userEmail" 
+                    class="form-control" 
+                    placeholder="e.g. name@example.com"
+                    required
+                    autocomplete="email"
+                  >
+                </div>
+                <span class="field-error-msg" id="emailError">Please enter a valid email address.</span>
+              </div>
+
+              <!-- Subject Input -->
+              <div class="form-group" id="subjectGroup">
+                <label for="userSubject" class="form-label">
+                  Subject / Topic <span class="required-star">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <i class="fa-regular fa-bookmark input-icon"></i>
+                  <input 
+                    type="text" 
+                    id="userSubject" 
+                    name="userSubject" 
+                    class="form-control" 
+                    placeholder="e.g. Internship Inquiry / Project Discussion"
+                    required
+                  >
+                </div>
+                <span class="field-error-msg" id="subjectError">Please provide a brief subject.</span>
+              </div>
+
+              <!-- Message Input -->
+              <div class="form-group" id="messageGroup">
+                <label for="userMessage" class="form-label">
+                  Your Message <span class="required-star">*</span>
+                </label>
+                <div class="input-wrapper textarea-wrapper">
+                  <i class="fa-regular fa-comment-dots input-icon"></i>
+                  <textarea 
+                    id="userMessage" 
+                    name="userMessage" 
+                    rows="4" 
+                    class="form-control" 
+                    placeholder="Write your message or inquiry here..."
+                    required
+                  ></textarea>
+                </div>
+                <span class="field-error-msg" id="messageError">Please enter your message (at least 10 characters).</span>
+              </div>
+
+              <!-- Form Submit Button -->
+              <button type="submit" id="submitBtn" class="btn btn-primary btn-block btn-submit">
+                <span class="btn-text">Send Message</span>
+                <i class="fa-solid fa-paper-plane btn-icon"></i>
+                <span class="spinner" aria-hidden="true"></span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Project Details Modal -->
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-dialog glass-card">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close dialog">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge" id="modalBadge">PROJECT DETAILS</span>
+        <h3 class="modal-title" id="modalTitle">Project Title</h3>
+        <p class="modal-tech" id="modalTech">Tech stack</p>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div class="modal-footer">
+        <a href="#contact" class="btn btn-primary" id="modalContactBtn">Discuss This Project</a>
+        <button class="btn btn-ghost" id="modalDismissBtn">Close</button>
+      </div>
+    </div>
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+  </div>
+
+  <!-- Interactive Resume Preview Modal -->
+  <div class="modal" id="resumeModal" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
+    <div class="modal-dialog glass-card resume-modal-dialog">
+      <button class="modal-close" id="resumeModalCloseBtn" aria-label="Close dialog">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge">RESUME PREVIEW</span>
+        <h3 class="modal-title" id="resumeModalTitle">Vivek Singh — Curriculum Vitae</h3>
+        <p class="modal-tech">Frontend & Full-Stack Developer | BCA Student</p>
+      </div>
+      <div class="modal-body resume-modal-body">
+        <div class="resume-preview-document">
+          <div class="doc-header">
+            <div>
+              <h2>VIVEK SINGH</h2>
+              <p class="doc-sub">Frontend Developer &bull; BCA Tech Builder</p>
+            </div>
+            <div class="doc-contact-info">
+              <p>Email: vivekrajput7468@gmail.com</p>
+              <p>Location: India</p>
+              <p>CodSoft Frontend Internship &bull; Task 1</p>
+            </div>
+          </div>
+          <hr class="doc-hr">
+          
+          <div class="doc-section">
+            <h4>PROFESSIONAL SUMMARY</h4>
+            <p>Driven BCA student with strong technical foundation in modern web development, UI/UX aesthetics, and full-stack solutions. Experienced in building high-performance, accessible, and responsive applications using HTML5, CSS3, JavaScript, and React. Passionate about prototype-first engineering, AI integrations, and digital products.</p>
+          </div>
+
+          <div class="doc-section">
+            <h4>TECHNICAL SKILLS</h4>
+            <ul>
+              <li><strong>Frontend:</strong> HTML5 (Semantics, SEO, a11y), CSS3 (Flexbox, Grid, Animations, Glassmorphism), JavaScript (ES6+, DOM, Async/Await), Responsive Web Design.</li>
+              <li><strong>Frameworks & Tools:</strong> React, TypeScript, Git, GitHub, VS Code, REST APIs, Vite.</li>
+              <li><strong>Additional Domains:</strong> AI/ML APIs, Python foundations, Telemetry Modeling, Cyber Security Mindset.</li>
+            </ul>
+          </div>
+
+          <div class="doc-section">
+            <h4>FEATURED PROJECTS</h4>
+            <ul>
+              <li><strong>Aeropulse AI:</strong> MALE UAV aero-engine digital twin with real-time telemetry modeling and anomaly detection.</li>
+              <li><strong>GramSathi AI:</strong> Multilingual rural empowerment and advisory platform powered by modern web technologies.</li>
+              <li><strong>Personal Portfolio Website (CodSoft Task 1):</strong> Fully responsive portfolio featuring dark/light modes, form validation, and modern glassmorphism.</li>
+              <li><strong>Productivity Suite:</strong> Dynamic Task Hub, Smart Expense Tracker, and Sleek Audio Streamer.</li>
+            </ul>
+          </div>
+
+          <div class="doc-section">
+            <h4>EDUCATION</h4>
+            <p><strong>Bachelor of Computer Applications (BCA)</strong> &bull; Focus on Computer Science & Software Engineering.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="assets/Vivek_Singh_Resume.pdf" download="Vivek_Singh_Resume.pdf" class="btn btn-primary">
+          <i class="fa-solid fa-download"></i> Download PDF
+        </a>
+        <button class="btn btn-secondary" onclick="window.print()">
+          <i class="fa-solid fa-print"></i> Print Resume
+        </button>
+      </div>
+    </div>
+    <div class="modal-backdrop" id="resumeModalBackdrop"></div>
+  </div>
+
+  <!-- Interactive Quick Play Modal (Task Hub, Expense, Music) -->
+  <div class="modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
+    <div class="modal-dialog glass-card demo-modal-dialog">
+      <button class="modal-close" id="demoModalCloseBtn" aria-label="Close dialog">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge" id="demoModalBadge">INTERACTIVE LIVE DEMO</span>
+        <h3 class="modal-title" id="demoModalTitle">Quick Demo</h3>
+      </div>
+      <div class="modal-body" id="demoModalBody">
+        <!-- Interactive App embedded here -->
+      </div>
+    </div>
+    <div class="modal-backdrop" id="demoModalBackdrop"></div>
+  </div>
+
+  <!-- Floating Toast Notification System -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTopBtn" class="back-to-top-btn" aria-label="Scroll back to top" title="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-avatar">VS</span>
+          <span class="brand-text">Vivek Singh<span class="text-accent">.</span></span>
+          <p class="footer-tagline">Crafting modern, accessible, and responsive digital experiences.</p>
+        </div>
+        
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-socials">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:vivekrajput7468@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 <strong>Vivek Singh</strong>. All rights reserved.</p>
+        <p class="codsoft-credit">
+          Developed for <span class="badge-codsoft">CodSoft Frontend Development Internship</span> &bull; Task 1 (Personal Portfolio)
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
