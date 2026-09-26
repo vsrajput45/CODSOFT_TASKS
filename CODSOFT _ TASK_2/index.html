@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A refined, responsive Expense Tracker with real-time balance calculations, category filtering, edit/delete capabilities, and local storage persistence. Designed in an editorial creamy and dry aesthetic.">
+  <title>AuraLedger — Elegant Expense Tracker & Finance Manager</title>
+  
+  <!-- Modern Google Fonts: Plus Jakarta Sans (Clean Body) & Newsreader / Playfair (Artisanal Numbers & Headlines) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Ambient Grain / Warm Glow Overlay -->
+  <div class="dry-grain-overlay" aria-hidden="true"></div>
+
+  <div class="app-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand-badge">
+          <span class="brand-seal">✦</span>
+          <span class="brand-sub">CodSoft Task 3</span>
+        </div>
+        <h1 class="brand-title">Aura<em>Ledger</em></h1>
+        <p class="brand-tagline">Personal income & expense tracker with real-time ledger intelligence.</p>
+      </div>
+
+      <div class="header-right">
+        <!-- Currency Selector -->
+        <div class="currency-control" title="Choose Currency Display">
+          <label for="currencySelect" class="visually-hidden">Select Currency</label>
+          <span class="currency-symbol-icon" id="currencySymbolDisplay">₹</span>
+          <select id="currencySelect" class="currency-select" aria-label="Select display currency">
+            <option value="INR" data-symbol="₹" selected>INR (₹)</option>
+            <option value="USD" data-symbol="$">USD ($)</option>
+            <option value="EUR" data-symbol="€">EUR (€)</option>
+            <option value="GBP" data-symbol="£">GBP (£)</option>
+          </select>
+        </div>
+
+        <!-- Quick Demo / Reset Control -->
+        <button id="resetDemoBtn" class="btn-dry-outline" title="Reset to curated demonstration transactions">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+          </svg>
+          <span>Demo Data</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Grid -->
+    <main class="dashboard-container">
+      
+      <!-- 1. SUMMARY CARDS SECTION -->
+      <section class="summary-section" aria-label="Financial Summary Cards">
+        
+        <!-- Total Income Card -->
+        <article class="summary-card card-income" id="cardIncome">
+          <div class="card-header-row">
+            <div class="card-icon-pill icon-income" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+            </div>
+            <span class="card-label">Total Income</span>
+          </div>
+          <div class="card-main-val">
+            <span class="summary-symbol">₹</span>
+            <span class="summary-amount" id="totalIncomeDisplay">0.00</span>
+          </div>
+          <div class="card-footer-meta">
+            <span class="meta-tag income-badge" id="incomeCountBadge">0 deposits</span>
+            <span class="meta-note">Money received</span>
+          </div>
+        </article>
+
+        <!-- Total Expenses Card -->
+        <article class="summary-card card-expense" id="cardExpense">
+          <div class="card-header-row">
+            <div class="card-icon-pill icon-expense" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </div>
+            <span class="card-label">Total Expenses</span>
+          </div>
+          <div class="card-main-val">
+            <span class="summary-symbol">₹</span>
+            <span class="summary-amount" id="totalExpenseDisplay">0.00</span>
+          </div>
+          <div class="card-footer-meta">
+            <span class="meta-tag expense-badge" id="expenseCountBadge">0 payouts</span>
+            <span class="meta-note">Money spent</span>
+          </div>
+        </article>
+
+        <!-- Net Balance Card -->
+        <article class="summary-card card-balance" id="cardBalance">
+          <div class="card-header-row">
+            <div class="card-icon-pill icon-balance" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <line x1="6" y1="12" x2="10" y2="12"></line>
+                <line x1="14" y1="12" x2="18" y2="12"></line>
+              </svg>
+            </div>
+            <span class="card-label">Net Balance</span>
+          </div>
+          <div class="card-main-val">
+            <span class="summary-symbol">₹</span>
+            <span class="summary-amount" id="totalBalanceDisplay">0.00</span>
+          </div>
+          <div class="card-footer-meta">
+            <span class="meta-tag balance-badge" id="balanceHealthBadge">Healthy</span>
+            <span class="meta-note">Income − Expenses</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- Mini Cash Flow Ratio Progress Bar -->
+      <section class="cashflow-bar-container" aria-label="Cashflow Ratio">
+        <div class="cashflow-bar-info">
+          <span class="ratio-text" id="expenseRatioText">Expense Ratio: 0% of income used</span>
+          <span class="savings-text" id="savingsRatioText">Savings rate: 100%</span>
+        </div>
+        <div class="cashflow-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          <div class="cashflow-fill" id="cashflowFill" style="width: 0%;"></div>
+        </div>
+      </section>
+
+      <!-- 2-COLUMN MAIN CONTENT: ADD FORM (LEFT) + HISTORY & FILTERS (RIGHT) -->
+      <div class="content-split-layout">
+        
+        <!-- LEFT COLUMN: ADD TRANSACTION FORM -->
+        <section class="panel-box add-transaction-panel" aria-labelledby="addTxTitle">
+          <div class="panel-header">
+            <div class="panel-heading-wrap">
+              <span class="panel-indicator-dot"></span>
+              <h2 id="addTxTitle" class="panel-title">Add Transaction</h2>
+            </div>
+            <p class="panel-subtitle">Record a new credit or debit to update the ledger</p>
+          </div>
+
+          <form id="transactionForm" class="transaction-form" novalidate>
+            <!-- Transaction Type Selection -->
+            <div class="form-group">
+              <label class="form-label">Transaction Type <span class="required-star">*</span></label>
+              <div class="type-switch-group" role="radiogroup" aria-label="Transaction Type">
+                <label class="type-switch-pill active-expense" id="typePillExpense">
+                  <input type="radio" name="txType" id="txTypeExpense" value="expense" checked class="visually-hidden">
+                  <span class="pill-dot"></span>
+                  <span class="pill-text">Expense</span>
+                </label>
+                <label class="type-switch-pill" id="typePillIncome">
+                  <input type="radio" name="txType" id="txTypeIncome" value="income" class="visually-hidden">
+                  <span class="pill-dot"></span>
+                  <span class="pill-text">Income</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Description Input -->
+            <div class="form-group">
+              <label for="txDescription" class="form-label">Description <span class="required-star">*</span></label>
+              <div class="input-with-icon">
+                <input 
+                  type="text" 
+                  id="txDescription" 
+                  name="description" 
+                  class="dry-input" 
+                  placeholder="e.g. Monthly Salary, Grocery Store, Coffee" 
+                  maxlength="60" 
+                  required 
+                  autocomplete="off"
+                >
+              </div>
+              <div class="quick-chips-wrapper">
+                <span class="quick-chip-label">Suggestions:</span>
+                <div class="quick-chips">
+                  <button type="button" class="chip-btn" data-desc="Monthly Salary" data-type="income" data-cat="Salary">Salary</button>
+                  <button type="button" class="chip-btn" data-desc="Grocery Mart" data-type="expense" data-cat="Food">Groceries</button>
+                  <button type="button" class="chip-btn" data-desc="Metro Card Recharge" data-type="expense" data-cat="Travel">Metro</button>
+                  <button type="button" class="chip-btn" data-desc="Electricity Bill" data-type="expense" data-cat="Bills">Electricity</button>
+                  <button type="button" class="chip-btn" data-desc="Coffee & Snacks" data-type="expense" data-cat="Food">Coffee</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Amount Input -->
+            <div class="form-group">
+              <label for="txAmount" class="form-label">Amount <span class="required-star">*</span></label>
+              <div class="amount-input-box">
+                <span class="input-currency-prefix" id="inputCurrencyPrefix">₹</span>
+                <input 
+                  type="number" 
+                  id="txAmount" 
+                  name="amount" 
+                  class="dry-input dry-input-amount" 
+                  placeholder="0.00" 
+                  step="any" 
+                  min="0.01" 
+                  required
+                >
+              </div>
+            </div>
+
+            <!-- Two-Column Row: Category & Date -->
+            <div class="form-row-2col">
+              <!-- Category Selector -->
+              <div class="form-group">
+                <label for="txCategory" class="form-label">Category <span class="required-star">*</span></label>
+                <div class="select-wrapper">
+                  <select id="txCategory" name="category" class="dry-select" required>
+                    <option value="" disabled selected>Select category</option>
+                    <option value="Food">🍽️ Food</option>
+                    <option value="Travel">🚗 Travel</option>
+                    <option value="Shopping">🛍️ Shopping</option>
+                    <option value="Bills">⚡ Bills</option>
+                    <option value="Salary">💼 Salary</option>
+                    <option value="Other">📦 Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Date Picker -->
+              <div class="form-group">
+                <label for="txDate" class="form-label">Date <span class="required-star">*</span></label>
+                <input 
+                  type="date" 
+                  id="txDate" 
+                  name="date" 
+                  class="dry-input dry-date-input" 
+                  required
+                >
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submitTxBtn" class="btn-dry-primary">
+              <span class="btn-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="16"></line>
+                  <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+              </span>
+              <span class="btn-text">Add Transaction</span>
+            </button>
+          </form>
+        </section>
+
+        <!-- RIGHT COLUMN: TRANSACTION HISTORY & FILTERING -->
+        <section class="panel-box history-panel" aria-labelledby="historyTitle">
+          <div class="panel-header">
+            <div class="history-title-row">
+              <div class="panel-heading-wrap">
+                <span class="panel-indicator-dot"></span>
+                <h2 id="historyTitle" class="panel-title">Transaction History</h2>
+              </div>
+              <span class="history-counter-pill" id="historyCounterPill">0 items</span>
+            </div>
+            <p class="panel-subtitle">Filter, inspect, edit, or delete recent ledger entries</p>
+          </div>
+
+          <!-- Filter & Search Toolbar -->
+          <div class="filter-toolbar">
+            
+            <!-- Category Filter Tabs / Pills -->
+            <div class="filter-categories-scroll" role="tablist" aria-label="Category Filter">
+              <button type="button" class="cat-filter-chip active" data-category="ALL" role="tab" aria-selected="true">
+                All Categories
+              </button>
+              <button type="button" class="cat-filter-chip" data-category="Food" role="tab" aria-selected="false">
+                🍽️ Food
+              </button>
+              <button type="button" class="cat-filter-chip" data-category="Travel" role="tab" aria-selected="false">
+                🚗 Travel
+              </button>
+              <button type="button" class="cat-filter-chip" data-category="Shopping" role="tab" aria-selected="false">
+                🛍️ Shopping
+              </button>
+              <button type="button" class="cat-filter-chip" data-category="Bills" role="tab" aria-selected="false">
+                ⚡ Bills
+              </button>
+              <button type="button" class="cat-filter-chip" data-category="Salary" role="tab" aria-selected="false">
+                💼 Salary
+              </button>
+              <button type="button" class="cat-filter-chip" data-category="Other" role="tab" aria-selected="false">
+                📦 Other
+              </button>
+            </div>
+
+            <!-- Sub Filter Controls: Search & Sort & Type Filter -->
+            <div class="sub-filter-row">
+              <!-- Search Input -->
+              <div class="search-box">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input 
+                  type="text" 
+                  id="searchTxInput" 
+                  class="search-input" 
+                  placeholder="Search by description or note..." 
+                  aria-label="Search transactions"
+                >
+                <button type="button" id="clearSearchBtn" class="clear-search-btn" title="Clear search" hidden>✕</button>
+              </div>
+
+              <!-- Type Filter Dropdown -->
+              <div class="compact-select-box">
+                <select id="typeFilterSelect" class="compact-select" aria-label="Filter by type">
+                  <option value="ALL">All Types</option>
+                  <option value="income">Income Only</option>
+                  <option value="expense">Expenses Only</option>
+                </select>
+              </div>
+
+              <!-- Sort Dropdown -->
+              <div class="compact-select-box">
+                <select id="sortSelect" class="compact-select" aria-label="Sort transactions">
+                  <option value="date-desc">Newest First</option>
+                  <option value="date-asc">Oldest First</option>
+                  <option value="amount-desc">Highest Amount</option>
+                  <option value="amount-asc">Lowest Amount</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transaction List Container -->
+          <div class="transaction-list-scroll">
+            <ul id="transactionList" class="transaction-list" aria-live="polite">
+              <!-- Dynamically populated via script.js -->
+            </ul>
+
+            <!-- Empty State Display -->
+            <div id="emptyState" class="empty-state-card" hidden>
+              <div class="empty-art">📭</div>
+              <h3 class="empty-title">No transactions found</h3>
+              <p class="empty-desc" id="emptyStateDesc">There are no records matching your current filter criteria.</p>
+              <button type="button" id="emptyResetFilterBtn" class="btn-dry-outline btn-sm">Clear All Filters</button>
+            </div>
+          </div>
+
+          <!-- History Footer Summary Info -->
+          <div class="history-footer">
+            <span class="showing-count" id="showingCountText">Showing 0 of 0 entries</span>
+            <button type="button" id="exportCsvBtn" class="btn-text-link" title="Download ledger entries as CSV file">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Export CSV</span>
+            </button>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+      <div class="footer-inner">
+        <p class="footer-credit">
+          <strong>CodSoft Frontend Development Internship</strong> — Task 3: Expense Tracker
+        </p>
+        <p class="footer-storage-note">
+          <span class="storage-dot"></span>
+          Data safely cached in browser Local Storage.
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- 3. EDIT TRANSACTION MODAL (Native Accessible Dialog) -->
+  <dialog id="editModal" class="dry-dialog" aria-labelledby="editModalTitle">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <div class="dialog-title-wrap">
+          <span class="dialog-icon">✏️</span>
+          <div>
+            <h3 id="editModalTitle" class="dialog-title">Edit Transaction</h3>
+            <p class="dialog-subtitle">Update transaction details and recalculate balances</p>
+          </div>
+        </div>
+        <button type="button" id="closeEditModalBtn" class="dialog-close-btn" aria-label="Close dialog">✕</button>
+      </div>
+
+      <form id="editForm" class="edit-form" novalidate>
+        <input type="hidden" id="editTxId">
+
+        <!-- Edit Type Selection -->
+        <div class="form-group">
+          <label class="form-label">Transaction Type</label>
+          <div class="type-switch-group">
+            <label class="type-switch-pill" id="editTypePillExpense">
+              <input type="radio" name="editTxType" id="editTxTypeExpense" value="expense" class="visually-hidden">
+              <span class="pill-dot"></span>
+              <span class="pill-text">Expense</span>
+            </label>
+            <label class="type-switch-pill" id="editTypePillIncome">
+              <input type="radio" name="editTxType" id="editTxTypeIncome" value="income" class="visually-hidden">
+              <span class="pill-dot"></span>
+              <span class="pill-text">Income</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Edit Description -->
+        <div class="form-group">
+          <label for="editTxDescription" class="form-label">Description <span class="required-star">*</span></label>
+          <input type="text" id="editTxDescription" class="dry-input" required maxlength="60">
+        </div>
+
+        <!-- Edit Amount -->
+        <div class="form-group">
+          <label for="editTxAmount" class="form-label">Amount <span class="required-star">*</span></label>
+          <div class="amount-input-box">
+            <span class="input-currency-prefix" id="editCurrencyPrefix">₹</span>
+            <input type="number" id="editTxAmount" class="dry-input dry-input-amount" step="any" min="0.01" required>
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <!-- Edit Category -->
+          <div class="form-group">
+            <label for="editTxCategory" class="form-label">Category <span class="required-star">*</span></label>
+            <div class="select-wrapper">
+              <select id="editTxCategory" class="dry-select" required>
+                <option value="Food">🍽️ Food</option>
+                <option value="Travel">🚗 Travel</option>
+                <option value="Shopping">🛍️ Shopping</option>
+                <option value="Bills">⚡ Bills</option>
+                <option value="Salary">💼 Salary</option>
+                <option value="Other">📦 Other</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Edit Date -->
+          <div class="form-group">
+            <label for="editTxDate" class="form-label">Date <span class="required-star">*</span></label>
+            <input type="date" id="editTxDate" class="dry-input dry-date-input" required>
+          </div>
+        </div>
+
+        <div class="dialog-actions">
+          <button type="button" id="cancelEditBtn" class="btn-dry-outline">Cancel</button>
+          <button type="submit" class="btn-dry-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- DELETE CONFIRMATION MODAL -->
+  <dialog id="deleteModal" class="dry-dialog" aria-labelledby="deleteModalTitle">
+    <div class="dialog-content delete-confirm-content">
+      <div class="delete-icon-warning">⚠️</div>
+      <h3 id="deleteModalTitle" class="dialog-title">Delete Transaction?</h3>
+      <p class="dialog-subtitle" id="deleteConfirmText">
+        Are you sure you want to permanently delete this transaction? Your summary balance will be recalculated immediately.
+      </p>
+      <input type="hidden" id="deleteTxId">
+      <div class="dialog-actions">
+        <button type="button" id="cancelDeleteBtn" class="btn-dry-outline">Keep it</button>
+        <button type="button" id="confirmDeleteBtn" class="btn-dry-danger">Yes, Delete</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastContainer" class="toast-container" aria-live="assertive" aria-atomic="true"></div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
