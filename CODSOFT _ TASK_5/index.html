@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumina | Ideas Worth Reading — Modern Blog</title>
+  <meta name="description" content="Discover thoughtful articles, guides, and perspectives on Technology, Career, and Design. A modern, responsive blog platform.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Fraunces / Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+  <header class="site-header" id="siteHeader">
+    <div class="nav-container">
+      <a href="#home" class="logo" id="siteLogo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-feather-pointed"></i>
+        </div>
+        <span class="logo-text">Lumina<span>.</span></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active" id="navHome">Home</a></li>
+          <li><a href="#articles" class="nav-link" id="navArticles">Articles</a></li>
+          <li><a href="#about" class="nav-link" id="navAbout">About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Nav Controls (Theme Toggle & Mobile Menu) -->
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch between light and dark theme" title="Toggle Theme">
+          <span class="theme-icon light-icon"><i class="fa-solid fa-sun"></i></span>
+          <span class="theme-icon dark-icon"><i class="fa-solid fa-moon"></i></span>
+          <span class="theme-toggle-label">Theme</span>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Curated Thought Leadership</span>
+        </div>
+        
+        <h1 class="hero-title">Ideas worth reading<span class="accent-period">.</span></h1>
+        
+        <p class="hero-subtitle">
+          Explore thoughtful insights, deep-dive tutorials, and inspiring ideas across technology, design, and career craftsmanship.
+        </p>
+
+        <!-- Search Bar Section -->
+        <div class="search-wrapper" id="searchWrapper">
+          <div class="search-input-group">
+            <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+            <input 
+              type="text" 
+              id="searchInput" 
+              class="search-input" 
+              placeholder="Search articles by title, topic, or keyword (e.g. JavaScript, Design)..." 
+              autocomplete="off"
+              aria-label="Search articles"
+            >
+            <button class="clear-search-btn" id="clearSearchBtn" aria-label="Clear search query" style="display: none;">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          
+          <div class="trending-tags" id="trendingTags">
+            <span class="trending-label"><i class="fa-solid fa-arrow-trend-up"></i> Trending:</span>
+            <button class="tag-pill" data-query="JavaScript">#JavaScript</button>
+            <button class="tag-pill" data-query="UI/UX">#UI/UX</button>
+            <button class="tag-pill" data-query="Career">#Career</button>
+            <button class="tag-pill" data-query="Frontend">#Frontend</button>
+            <button class="tag-pill" data-query="Design Systems">#Design Systems</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles-section" id="articles">
+      <div class="container">
+        <!-- Section Header with Category Filters -->
+        <div class="section-top-bar">
+          <div class="section-title-wrap">
+            <h2 class="section-title">Featured Articles</h2>
+            <p class="section-subtitle">Discover handpicked writings from industry practitioners and creative minds.</p>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="category-filters" id="categoryFilters" role="tablist" aria-label="Filter articles by category">
+            <button class="filter-btn active" data-category="all" role="tab" aria-selected="true" id="filterAll">
+              <i class="fa-solid fa-layer-group"></i> All Categories
+              <span class="category-count" id="countAll">0</span>
+            </button>
+            <button class="filter-btn" data-category="Technology" role="tab" aria-selected="false" id="filterTech">
+              <i class="fa-solid fa-laptop-code"></i> Technology
+              <span class="category-count" id="countTech">0</span>
+            </button>
+            <button class="filter-btn" data-category="Career" role="tab" aria-selected="false" id="filterCareer">
+              <i class="fa-solid fa-compass"></i> Career
+              <span class="category-count" id="countCareer">0</span>
+            </button>
+            <button class="filter-btn" data-category="Design" role="tab" aria-selected="false" id="filterDesign">
+              <i class="fa-solid fa-palette"></i> Design
+              <span class="category-count" id="countDesign">0</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Status & Stats Bar -->
+        <div class="filter-status-bar" id="filterStatusBar">
+          <div class="status-info">
+            <span id="resultsCount">Showing 6 articles</span>
+            <span class="active-filter-badge" id="activeFilterBadge" style="display: none;">
+              Filter: <strong id="filterBadgeText">All</strong>
+              <button id="resetFilterBtn" title="Reset filter" aria-label="Reset filter"><i class="fa-solid fa-xmark"></i></button>
+            </span>
+          </div>
+        </div>
+
+        <!-- Articles Grid Container -->
+        <div class="articles-grid" id="articlesGrid" aria-live="polite">
+          <!-- Dynamically populated by script.js -->
+        </div>
+
+        <!-- Empty / No Results State -->
+        <div class="no-results-state" id="noResultsState" style="display: none;">
+          <div class="no-results-icon">
+            <i class="fa-regular fa-folder-open"></i>
+          </div>
+          <h3 class="no-results-title">No articles found</h3>
+          <p class="no-results-desc">We couldn't find any articles matching your search query or selected category. Try searching for something else or reset your filters.</p>
+          <button class="btn btn-secondary" id="resetSearchBtn">
+            <i class="fa-solid fa-arrow-rotate-left"></i> Reset Search & Filters
+          </button>
+        </div>
+
+        <!-- Load More Action Container -->
+        <div class="load-more-wrap" id="loadMoreWrap">
+          <button class="btn btn-primary load-more-btn" id="loadMoreBtn">
+            <span>Load More Articles</span>
+            <i class="fa-solid fa-arrow-down"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-card">
+          <div class="about-content">
+            <div class="about-badge">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <span>About Lumina</span>
+            </div>
+            <h2 class="about-title">A sanctuary for curious minds & builders</h2>
+            <p class="about-desc">
+              Lumina is a curated digital publication dedicated to modern software engineering, intentional design aesthetics, and mindful career progression. Created as part of the <strong>CodSoft Frontend Development Internship</strong> (Task 5), it combines rich responsive design with fast clientside interactions.
+            </p>
+            <div class="about-features">
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                  <h4>Zero Clutter</h4>
+                  <p>Distraction-free reading experience crafted with warm beige tones & regal purple accents.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-filter"></i></div>
+                <div>
+                  <h4>Dynamic Filtering</h4>
+                  <p>Instant category switching, real-time live search, and progressive content loading.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                <div>
+                  <h4>Responsive & Accessible</h4>
+                  <p>Semantic HTML5, dialog standard modals, dark mode persistence, and seamless mobile layout.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-stats-card">
+            <div class="stat-box">
+              <span class="stat-number">12+</span>
+              <span class="stat-label">In-depth Articles</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Core Verticals</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Vanilla Stack</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">10k+</span>
+              <span class="stat-label">Knowledge Seekers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA Section -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-card">
+          <div class="newsletter-glow" aria-hidden="true"></div>
+          <div class="newsletter-text">
+            <h3 class="newsletter-title">Subscribe to the Lumina Weekly</h3>
+            <p class="newsletter-subtitle">Get the latest articles on Technology, Design, and Career delivered directly to your inbox every Sunday morning.</p>
+          </div>
+          <form class="newsletter-form" id="newsletterForm" onsubmit="event.preventDefault(); window.handleNewsletterSubmit(event);">
+            <div class="form-group">
+              <input type="email" id="newsletterEmail" placeholder="Enter your email address" required aria-label="Email for newsletter">
+              <button type="submit" class="btn btn-primary" id="newsletterSubmitBtn">
+                <span>Subscribe</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+            <p class="form-hint"><i class="fa-solid fa-shield-halved"></i> No spam ever. Unsubscribe at any time with one click.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Individual Blog Detail View (Modal Dialog) -->
+  <dialog class="article-modal" id="articleModal" closedby="any" aria-labelledby="modalArticleTitle">
+    <div class="modal-wrapper">
+      <div class="modal-header">
+        <div class="modal-category-wrap">
+          <span class="modal-category" id="modalCategory">Technology</span>
+          <span class="modal-dot">•</span>
+          <span class="modal-read-time" id="modalReadTime"><i class="fa-regular fa-clock"></i> 5 min read</span>
+        </div>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close article details">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-hero-visual" id="modalHeroVisual">
+        <!-- Dynamic header visual rendered by JS -->
+      </div>
+
+      <div class="modal-body-content">
+        <div class="modal-meta-row">
+          <div class="modal-author-info">
+            <div class="author-avatar" id="modalAuthorAvatar">
+              <i class="fa-solid fa-user-pen"></i>
+            </div>
+            <div class="author-details">
+              <span class="author-name" id="modalAuthorName">Alex Morgan</span>
+              <span class="author-role" id="modalAuthorRole">Staff Engineer & Tech Lead</span>
+            </div>
+          </div>
+          <div class="modal-date" id="modalDate">
+            <i class="fa-regular fa-calendar"></i>
+            <span id="modalDateText">Oct 12, 2026</span>
+          </div>
+        </div>
+
+        <h1 class="modal-title" id="modalArticleTitle">Article Title Placeholder</h1>
+        
+        <div class="modal-tags" id="modalTags">
+          <!-- Dynamic tags -->
+        </div>
+
+        <hr class="modal-divider">
+
+        <div class="modal-article-text" id="modalArticleBody">
+          <!-- Full article paragraphs dynamically loaded -->
+        </div>
+
+        <div class="modal-footer-action">
+          <div class="modal-share-links">
+            <span class="share-label">Share article:</span>
+            <button class="share-btn" title="Share on Twitter / X" onclick="window.shareModalArticle('twitter')"><i class="fa-brands fa-x-twitter"></i></button>
+            <button class="share-btn" title="Share on LinkedIn" onclick="window.shareModalArticle('linkedin')"><i class="fa-brands fa-linkedin-in"></i></button>
+            <button class="share-btn" title="Copy Link" id="copyArticleLinkBtn"><i class="fa-solid fa-link"></i></button>
+          </div>
+          <button class="btn btn-secondary" id="modalBottomCloseBtn">
+            <i class="fa-solid fa-arrow-left"></i> Back to Articles
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="assertive"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <div class="logo-icon">
+            <i class="fa-solid fa-feather-pointed"></i>
+          </div>
+          <span class="logo-text">Lumina<span>.</span></span>
+        </a>
+        <p class="footer-tagline">
+          Empowering modern developers, designers, and thinkers with well-crafted, actionable knowledge.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="GitHub" class="social-link"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="Twitter" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" aria-label="Discord" class="social-link"><i class="fa-brands fa-discord"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#articles">Featured Articles</a></li>
+          <li><a href="#about">About Lumina</a></li>
+          <li><a href="#searchWrapper">Search Archive</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4 class="footer-heading">Categories</h4>
+        <ul class="footer-links">
+          <li><a href="#articles" class="footer-cat-link" data-cat="Technology">Technology</a></li>
+          <li><a href="#articles" class="footer-cat-link" data-cat="Career">Career & Growth</a></li>
+          <li><a href="#articles" class="footer-cat-link" data-cat="Design">Design & UI/UX</a></li>
+          <li><a href="#articles" class="footer-cat-link" data-cat="all">All Topics</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4 class="footer-heading">Task Details</h4>
+        <p class="task-info-text">
+          <strong>CODSOFT Frontend Internship</strong><br>
+          Task 5: Responsive Blog Platform<br>
+          Built with HTML5, CSS3 & JavaScript
+        </p>
+        <div class="tech-stack-badges">
+          <span class="tech-badge">HTML5</span>
+          <span class="tech-badge">CSS3</span>
+          <span class="tech-badge">Vanilla JS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p class="copyright-text">
+          &copy; 2026 Lumina Blog. CodSoft Task 5 — All rights reserved.
+        </p>
+        <div class="footer-sub-links">
+          <a href="#">Privacy Policy</a>
+          <span class="footer-dot">•</span>
+          <a href="#">Terms of Reading</a>
+          <span class="footer-dot">•</span>
+          <a href="#home">Back to Top <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
